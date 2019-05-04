@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import project.TestContext;
 
+import java.util.List;
+
 public class ActionsHelper {
+
     private WebDriver getDriver() {
         return TestContext.getDriver();
     }
@@ -33,6 +36,14 @@ public class ActionsHelper {
 
     public void sendKeysToElement(By by, Keys keys) {
         getElement(by).sendKeys(keys);
+    }
+
+        public List<WebElement> getElements(By by) {
+        return getDriver().findElements(by);
+    }
+
+    public String getTextElement(By by) {
+        return getElement(by).getText();
     }
 
 }
