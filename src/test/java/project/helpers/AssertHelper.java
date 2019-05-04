@@ -8,5 +8,4 @@ public class AssertHelper {
         Assert.assertThat(expected,
                 CoreMatchers.containsString(actual));
     }
-
 }
