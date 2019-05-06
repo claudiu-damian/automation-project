@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class CartPage extends BasePage<CartPage> {
+    private By deleteFromCartButton = By.xpath("//td[@class='remove']//div");
+    private By cartContent = By.xpath("//div[@id='main-content']");
+    private String noContentInCartWarning = "Nu ai niciun produs în coş. Pentru a adăuga produse, te rugăm să te întorci în magazin.";
 
     //TODO: make the column number generic
     public void isProductPresent(String wordPresent) {
@@ -25,4 +28,14 @@ public class CartPage extends BasePage<CartPage> {
                     wordPresent);
         }
     }
+
+    public void pressDeleteFromCartButton() {
+        actionsHelper.clickElement(deleteFromCartButton);
+    }
+
+    public void checkIfThereAreNoProductsInCart() {
+        getDriver().manage().deleteAllCookies();
+        assertHelper.shouldContain(actionsHelper.getTextElement(cartContent), noContentInCartWarning);
+    }
+
 }
