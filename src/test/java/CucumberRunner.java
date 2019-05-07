@@ -5,7 +5,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
-        features = {"src/test/resources/features/DeleteAProductFromCart.feature"},
+        features = {"src/test/resources/features/"},
+        tags = "@Claudiu",
         glue = {"steps"}
 )
 

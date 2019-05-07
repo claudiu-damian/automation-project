@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import project.helpers.ActionsHelper;
 import project.helpers.AssertHelper;
 import project.helpers.DriverHelper;
+import project.helpers.LoggerHelper;
 
 public class TestContext {
     private static DriverHelper driverHelper = new DriverHelper();
