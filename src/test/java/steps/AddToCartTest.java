@@ -50,8 +50,8 @@ public class AddToCartTest extends TestBase {
         .isProductPresent("Vonino Navo P");
     }
 
-   @After
+/*   @After
     public void stopDriver() {
         getDriver().quit();
-    }
+    }*/
 }
