@@ -14,6 +14,6 @@ public class TestContext {
     protected LoggerHelper loggerHelper = new LoggerHelper();
 
     public static WebDriver getDriver() {
-        return driverHelper.getDriver();
+        return DriverHelper.getDriver();
     }
 }
