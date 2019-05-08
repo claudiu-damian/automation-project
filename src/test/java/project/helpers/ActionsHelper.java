@@ -1,9 +1,6 @@
 package project.helpers;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import project.TestContext;
 
 import java.util.List;
@@ -45,7 +42,13 @@ public class ActionsHelper {
         return getElement(by).getText();
     }
 
-    public String getAlertText() {
-        return getDriver().switchTo().alert().getText();
+    public Alert switchToAlert() {
+        return getDriver().switchTo().alert();
     }
+
+    public String getAlertText() {
+        return switchToAlert().getText();
+    }
+
+    public void acceptAlert() { switchToAlert().accept();}
 }
