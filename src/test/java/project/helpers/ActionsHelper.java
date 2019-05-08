@@ -48,5 +48,4 @@ public class ActionsHelper {
     public String getAlertText() {
         return getDriver().switchTo().alert().getText();
     }
-
 }

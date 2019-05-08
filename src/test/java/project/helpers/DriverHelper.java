@@ -36,14 +36,5 @@ public class DriverHelper implements Cloneable {
         return isActive;
     }
 
-    private static boolean isDialogPresent(WebDriver driver) {
-
-        try {
-            driver.switchTo().alert();
-            return false;
-        } catch (UnhandledAlertException e) {
-            // Modal dialog showed
-            return true;
-        }
-    }
 }
+
