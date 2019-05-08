@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -40,18 +39,12 @@ public class AddToCartTest extends TestBase {
     @And("clicks on the add to cart button")
     public void clicksOnTheAddToCartButton() {
         productPage.areProductSpecificationsDisplayed()
-        .isProductDescriptionDisplayed()
-        .addProductToCart();
+                .isProductDescriptionDisplayed().clickOrderNowButton().clickConfirmOrderButton().handleBrowserPopUp();
     }
 
     @Then("the product is displayed in the user's cart")
     public void theProductIsDisplayedInTheCart() {
         cartPage.navigateToCartPage()
-        .isProductPresent("Vonino Navo P");
+                .isProductPresent("Vonino Navo P");
     }
-
-/*   @After
-    public void stopDriver() {
-        getDriver().quit();
-    }*/
 }

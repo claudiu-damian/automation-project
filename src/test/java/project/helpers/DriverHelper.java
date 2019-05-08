@@ -1,6 +1,7 @@
 package project.helpers;
 
 import org.openqa.selenium.NoSuchSessionException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import project.factory.DriverFactory;
 
@@ -27,5 +28,14 @@ public class DriverHelper {
         }
         return isActive;
     }
-}
 
+    private static boolean isDialogPresent(WebDriver driver) {
+        try {
+            driver.switchTo().alert();
+            return false;
+        } catch (UnhandledAlertException e) {
+            // Modal dialog showed
+            return true;
+        }
+    }
+}
