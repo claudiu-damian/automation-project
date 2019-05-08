@@ -6,9 +6,13 @@ import org.junit.runner.RunWith;
 
 @CucumberOptions(
         features = {"src/test/resources/features/"},
-        tags = "@Claudiu",
-        glue = {"steps"}
+        tags = {"@Claudiu","~@wip","~@notImplemented","@sanity"},
+        glue = {"steps","com.StepDefinitions"},
+        dryRun = false,
+        strict = true,
+        monochrome = true,
+        plugin = { "progress",
+                "html:target/CucumberReport" }
 )
-
 public class CucumberRunner {
 }
