@@ -9,7 +9,6 @@ import project.TestContext;
 import java.util.List;
 
 public class ActionsHelper {
-
     private WebDriver getDriver() {
         return TestContext.getDriver();
     }
@@ -38,12 +37,16 @@ public class ActionsHelper {
         getElement(by).sendKeys(keys);
     }
 
-        public List<WebElement> getElements(By by) {
+    public List<WebElement> getElements(By by) {
         return getDriver().findElements(by);
     }
 
     public String getTextElement(By by) {
         return getElement(by).getText();
+    }
+
+    public String getAlertText() {
+        return getDriver().switchTo().alert().getText();
     }
 
 }
