@@ -39,12 +39,11 @@ public class AddToCartTest extends TestBase {
     @And("clicks on the add to cart button")
     public void clicksOnTheAddToCartButton() {
         productPage.areProductSpecificationsDisplayed()
-                .isProductDescriptionDisplayed().clickOrderNowButton().clickConfirmOrderButton().handleBrowserPopUp();
+                .isProductDescriptionDisplayed().clickOrderNowButton().clickConfirmOrderButton();
     }
 
     @Then("the product is displayed in the user's cart")
     public void theProductIsDisplayedInTheCart() {
-        cartPage.navigateToCartPage()
-                .isProductPresent("Vonino Navo P");
+        productPage.handleBrowserPopUp();
     }
 }

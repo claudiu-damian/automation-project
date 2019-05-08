@@ -1,12 +1,14 @@
 package project.helpers;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import project.TestContext;
 
 import java.util.List;
 
 public class ActionsHelper {
-
     private WebDriver getDriver() {
         return TestContext.getDriver();
     }
@@ -35,7 +37,7 @@ public class ActionsHelper {
         getElement(by).sendKeys(keys);
     }
 
-        public List<WebElement> getElements(By by) {
+    public List<WebElement> getElements(By by) {
         return getDriver().findElements(by);
     }
 
@@ -43,12 +45,8 @@ public class ActionsHelper {
         return getElement(by).getText();
     }
 
-    public Alert switchToAlert() {
-        return getDriver().switchTo().alert();
-    }
-
     public String getAlertText() {
-        return switchToAlert().getText();
+        return getDriver().switchTo().alert().getText();
     }
 
 }
