@@ -1,11 +1,13 @@
-Feature: Add to cart
+Feature: Delete from cart when it contains one product
+
   Background:
     Given user is on the main page
     And selects tablets subcategory
     When user enters a product
     And clicks on the add to cart button
     Then the product is displayed in the user's cart
-    @Claudiu
+
+  @Claudiu
   Scenario: User can delete a product from the cart
     Given is on the Cart page
     When user clicks on the delete from cart button

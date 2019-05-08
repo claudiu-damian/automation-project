@@ -1,4 +1,5 @@
 Feature: Add to cart
+
   @Claudiu
   Scenario: User can add to cart a product from a subcategory
     Given user is on the main page
