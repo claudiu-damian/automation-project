@@ -10,7 +10,7 @@ Feature: An alert appears when user makes fast command with completing number fi
     Given user is on the product page
     When user clicks on order now button
     And user completes the username field as "Rick"
-    And user completes the phone number field with an inappropriate "<number>"
+    And user completes the phone number field with "<number>"
     And user clicks on confirm order button
     Then a browser alert: "Numărul de telefon trebuie să conțină 6 sau 9 cifre" appears
 
@@ -19,4 +19,5 @@ Feature: An alert appears when user makes fast command with completing number fi
       | 5          |
       | 1253       |
       | 14235      |
+      | 1425236    |
       | 7456984126 |

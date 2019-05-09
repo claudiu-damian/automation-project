@@ -20,9 +20,9 @@ public class AlertTest extends TestBase {
     @When("user clicks on order now button")
     public void userClicksOnOrderNowButton() {
         productPage.clickOrderNowButton()
-                .areInstructionForInstantOrderPresent()
-                .isNameFieldPresent()
-                .isPhoneNumberFieldPresent();
+                .areInstructionForInstantOrderDisplayed()
+                .isNameFieldDisplayed()
+                .isPhoneNumberFieldDisplayed();
     }
 
     @And("user clicks on confirm order button")
@@ -35,13 +35,23 @@ public class AlertTest extends TestBase {
         productPage.checkTheAlertMessage(alertMessage);
     }
 
-    @And("user completes the phone number field with an inappropriate {string}")
-    public void userCompletesThePhoneNumberFieldWithAnInappropriate(String number) {
+    @And("user completes the phone number field with {string}")
+    public void userCompletesThePhoneNumberFieldWith(String number) {
         productPage.completePhoneNumberField(number);
     }
 
     @And("user completes the username field as {string}")
     public void userCompletesTheField(String userName) {
         productPage.completeNameField(userName);
+    }
+
+    @Then("a confirmation message with some instructions appears")
+    public void aConfirmationMessageWithSomeInstructionsAppears() {
+        productPage.isOrderConfirmationDisplayed()
+                .isConfimationMessageDisplayed()
+                .isInstructionDisplayed()
+                .isOkButtonDisplayed()
+                .clickOkButton()
+                .navigateToHomePage();
     }
 }

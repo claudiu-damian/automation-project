@@ -1,9 +1,6 @@
 package project.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
 
 public class ProductPage extends BasePage<ProductPage> {
     private By addToCartButton = By.xpath("//div[@id='add-to-cart']");
@@ -16,6 +13,10 @@ public class ProductPage extends BasePage<ProductPage> {
     private By nameField = By.xpath("//input[@id='edit-user-name']");
     private By phoneNumberField = By.xpath("//input[@id='edit-user-phone']");
     private By cancelButton = By.xpath("//form[@id='zaps-byprod-buynow-form']//div[@class='b-cancel']");
+    private By orderConfirmation = By.xpath("//div[@class='product-buy-success creditenabled']");
+    private By okButton = By.xpath("//div[@class='ok-button']");
+    private By confirmationText = By.xpath("//span[@class='span1']");
+    private By instructionText = By.xpath("//span[@class='span2']");
 
     public ProductPage addProductToCart() {
         actionsHelper.clickElement(addToCartButton);
@@ -32,17 +33,37 @@ public class ProductPage extends BasePage<ProductPage> {
         return this;
     }
 
-    public ProductPage areInstructionForInstantOrderPresent() {
+    public ProductPage areInstructionForInstantOrderDisplayed() {
         actionsHelper.isElementDisplayed(instructionForInstantOrder);
         return this;
     }
 
-    public ProductPage isNameFieldPresent() {
+    public ProductPage isNameFieldDisplayed() {
         actionsHelper.isElementDisplayed(nameField);
         return this;
     }
 
-    public ProductPage isPhoneNumberFieldPresent() {
+    public ProductPage isOkButtonDisplayed() {
+        actionsHelper.isElementDisplayed(okButton);
+        return this;
+    }
+
+    public ProductPage isOrderConfirmationDisplayed() {
+        actionsHelper.isElementDisplayed(orderConfirmation);
+        return this;
+    }
+
+    public ProductPage isInstructionDisplayed() {
+        actionsHelper.isElementDisplayed(instructionText);
+        return this;
+    }
+
+    public ProductPage isConfimationMessageDisplayed() {
+        actionsHelper.isElementDisplayed(confirmationText);
+        return this;
+    }
+
+    public ProductPage isPhoneNumberFieldDisplayed() {
         actionsHelper.isElementDisplayed(phoneNumberField);
         return this;
     }
@@ -54,6 +75,11 @@ public class ProductPage extends BasePage<ProductPage> {
 
     public ProductPage clickConfirmOrderButton() {
         actionsHelper.clickElement(confirmOrderButton);
+        return this;
+    }
+
+    public ProductPage clickOkButton() {
+        actionsHelper.clickElement(okButton);
         return this;
     }
 
