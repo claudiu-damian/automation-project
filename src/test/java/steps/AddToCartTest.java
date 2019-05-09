@@ -1,3 +1,4 @@
+
 package steps;
 
 import cucumber.api.java.en.And;
@@ -39,11 +40,13 @@ public class AddToCartTest extends TestBase {
     @And("clicks on the add to cart button")
     public void clicksOnTheAddToCartButton() {
         productPage.areProductSpecificationsDisplayed()
-                .isProductDescriptionDisplayed().clickOrderNowButton().clickConfirmOrderButton();
+                .isProductDescriptionDisplayed()
+                .addProductToCart();
     }
 
     @Then("the product is displayed in the user's cart")
     public void theProductIsDisplayedInTheCart() {
-        productPage.handleBrowserPopUp();
+        cartPage.navigateToCartPage()
+                .isProductPresent("Vonino Navo P");
     }
 }

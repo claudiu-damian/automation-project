@@ -1,12 +1,10 @@
 package project.helpers;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import project.TestContext;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ActionsHelper {
     private WebDriver getDriver() {
@@ -45,8 +43,21 @@ public class ActionsHelper {
         return getElement(by).getText();
     }
 
-    public String getAlertText() {
-        return getDriver().switchTo().alert().getText();
+    public Alert switchToAlert() {
+        return getDriver().switchTo().alert();
     }
 
+    public String getAlertText() {
+        return switchToAlert().getText();
+    }
+
+    public void acceptAlert() { switchToAlert().accept();}
+
+    public void implicitlyWait(int sec) {
+        getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
+    }
+
+    public void deleteAllCoockies() {
+        getDriver().manage().deleteAllCookies();
+    }
 }

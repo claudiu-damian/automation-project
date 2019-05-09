@@ -8,10 +8,10 @@ import project.helpers.AssertHelper;
 import java.util.List;
 
 public class FilteredPage extends TabletsPage {
-   public By webElements = By.xpath("//div[@class='views-field-title']");
+    public By webElements = By.xpath("//div[@class='views-field-title']");
     ActionsHelper actionsHelper = new ActionsHelper();
     AssertHelper assertHelper = new AssertHelper();
-   public String imputeBoxSearch = "Iphone";
+    public String imputeBoxSearch = "Iphone";
 
 
     public String search(String imputeBoxSearch) {
