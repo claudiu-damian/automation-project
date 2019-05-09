@@ -56,4 +56,8 @@ public class ActionsHelper {
     public void implicitlyWait(int sec) {
         getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
     }
+
+    public void deleteAllCoockies() {
+        getDriver().manage().deleteAllCookies();
+    }
 }
