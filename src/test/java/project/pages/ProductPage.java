@@ -58,7 +58,7 @@ public class ProductPage extends BasePage<ProductPage> {
     }
 
     public ProductPage checkTheAlertMessage(String expectedAlertMessage) {
-        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        actionsHelper.implicitlyWait(30);
         assertHelper.shouldContain(actionsHelper.getAlertText(), expectedAlertMessage);
         return this;
     }
