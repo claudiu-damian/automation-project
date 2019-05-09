@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import project.TestContext;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ActionsHelper {
     private WebDriver getDriver() {
@@ -51,4 +52,12 @@ public class ActionsHelper {
     }
 
     public void acceptAlert() { switchToAlert().accept();}
+
+    public void implicitlyWait(int sec) {
+        getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
+    }
+
+    public void deleteAllCoockies() {
+        getDriver().manage().deleteAllCookies();
+    }
 }
