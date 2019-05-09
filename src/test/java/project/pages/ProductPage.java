@@ -12,6 +12,10 @@ public class ProductPage extends BasePage<ProductPage> {
     private By productTitle = By.xpath("//div[@class='product-title']");
     private By orderNowButton = By.xpath("//div[@id='product-order']");
     private By confirmOrderButton = By.xpath("//form[@id='zaps-byprod-buynow-form']//div[@class='b-confirm']");
+    private By instructionForInstantOrder = By.xpath("//div[contains(text(),'Pentru a cumpăra rapid acest produs completează fo')]");
+    private By nameField = By.xpath("//input[@id='edit-user-name']");
+    private By phoneNumberField = By.xpath("//input[@id='edit-user-phone']");
+    private By cancelButton = By.xpath("//form[@id='zaps-byprod-buynow-form']//div[@class='b-cancel']");
 
     public ProductPage addProductToCart() {
         actionsHelper.clickElement(addToCartButton);
@@ -28,8 +32,18 @@ public class ProductPage extends BasePage<ProductPage> {
         return this;
     }
 
-    public ProductPage getProductName() {
-        actionsHelper.getTextElement(productTitle);
+    public ProductPage areInstructionForInstantOrderPresent() {
+        actionsHelper.isElementDisplayed(instructionForInstantOrder);
+        return this;
+    }
+
+    public ProductPage isNameFieldPresent() {
+        actionsHelper.isElementDisplayed(nameField);
+        return this;
+    }
+
+    public ProductPage isPhoneNumberFieldPresent() {
+        actionsHelper.isElementDisplayed(phoneNumberField);
         return this;
     }
 
@@ -40,19 +54,22 @@ public class ProductPage extends BasePage<ProductPage> {
 
     public ProductPage clickConfirmOrderButton() {
         actionsHelper.clickElement(confirmOrderButton);
-        //getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        //getDriver().switchTo().alert().getText();
-        //assertHelper.shouldContain(getDriver().switchTo().alert().getText(), "Numele este un cîmp obligatoriu");
-        //getDriver().switchTo().alert().accept();
         return this;
     }
 
-    public ProductPage handleBrowserPopUp() {
-        assertHelper.shouldContain(actionsHelper.getAlertText(), "Numele este un cîmp obligatoriu");
+    public ProductPage checkTheAlertMessage(String expectedAlertMessage) {
+        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        assertHelper.shouldContain(actionsHelper.getAlertText(), expectedAlertMessage);
         return this;
     }
 
+    public ProductPage completeNameField(String userName) {
+        actionsHelper.sendStringKeysToElement(nameField, userName);
+        return this;
+    }
 
-
-
+    public ProductPage completePhoneNumberField(String phoneNumber) {
+        actionsHelper.sendStringKeysToElement(phoneNumberField, phoneNumber);
+        return this;
+    }
 }
