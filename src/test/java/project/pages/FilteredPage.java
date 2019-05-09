@@ -7,11 +7,13 @@ import project.helpers.AssertHelper;
 
 import java.util.List;
 
+import static project.constants.TestConstants.PATH_OF_PRODUCTS;
+
 public class FilteredPage extends TabletsPage {
-    public By webElements = By.xpath("//div[@class='views-field-title']");
-    ActionsHelper actionsHelper = new ActionsHelper();
-    AssertHelper assertHelper = new AssertHelper();
-    public String imputeBoxSearch = "Iphone";
+
+    private ActionsHelper actionsHelper = new ActionsHelper();
+    private AssertHelper assertHelper = new AssertHelper();
+
 
 
     public String search(String imputeBoxSearch) {
@@ -43,7 +45,6 @@ public class FilteredPage extends TabletsPage {
     }
 
     public List<WebElement> returnListOfProducts() {
-        List<WebElement> elements = actionsHelper.getElements(webElements);
-        return elements;
+        return actionsHelper.getElements(PATH_OF_PRODUCTS);
     }
 }

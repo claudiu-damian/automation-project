@@ -1,49 +1,47 @@
 package project.pages;
 
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import project.TestContext;
 
+import static project.constants.TestConstants.*;
+
 public abstract class BasePage<T extends BasePage<T>> extends TestContext {
-    private By logo = By.xpath("//div[@id='dynamic-logo']");
-    private By searchBar = By.xpath("//input[@id='edit-keys']");
-    private By subCategories = By.xpath("//div[@id='subcategories']");
-    private By cartButton = By.xpath("//span[@class='cart-icon']");
-    private By phones = By.xpath("//span[contains(text(),'telefoane')]");
-    private By tablets = By.xpath("//li[@class='simple']//a[contains(text(),'tablete')]");
+
 
     public T isSearchBarPresent() {
-        actionsHelper.isElementDisplayed(searchBar);
+        actionsHelper.isElementDisplayed(SEARCH_BAR);
         return (T) this;
     }
 
     public T isLogoPresent() {
-        actionsHelper.isElementDisplayed(logo);
+        actionsHelper.isElementDisplayed(LOGO);
         return (T) this;
     }
 
     public HomePage navigateToHomePage() {
-        actionsHelper.clickElement(logo);
+        actionsHelper.clickElement(LOGO);
         return new HomePage();
     }
 
     public T areSubCategoriesDisplayed() {
-        actionsHelper.isElementDisplayed(subCategories);
+        actionsHelper.isElementDisplayed(SUB_CATEGORIES);
         return (T) this;
     }
 
     public CartPage navigateToCartPage() {
-        actionsHelper.clickElement(cartButton);
+        actionsHelper.clickElement(CART_BUTTON);
         return new CartPage();
     }
 
     public TabletsPage enterTabletesPage() {
-        actionsHelper.clickElement(phones);
+        actionsHelper.clickElement(PHONES);
         areSubCategoriesDisplayed();
-        actionsHelper.clickElement(tablets);
+        actionsHelper.clickElement(TABLETS);
         return new TabletsPage();
     }
+//    public TabletsPage enterWearalePage(){
+//        actionsHelper.clickElement();
+//        return new TabletsPage();
+//    }
 
 /*    public ProductPage accessProductPage(String productName) {
         By product = By.xpath(String.format("//a[contains(text(),'%s')]", productName));
