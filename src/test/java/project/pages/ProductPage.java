@@ -16,9 +16,6 @@ public class ProductPage extends BasePage<ProductPage> {
     private By nameField = By.xpath("//input[@id='edit-user-name']");
     private By phoneNumberField = By.xpath("//input[@id='edit-user-phone']");
     private By cancelButton = By.xpath("//form[@id='zaps-byprod-buynow-form']//div[@class='b-cancel']");
-    private String alertMessageWhenNoName = "Numele este un cîmp obligatoriu";
-    private String alertMessageWhenNoPhone = "Numărul de telefon este un cîmp obligatoriu";
-    private String alertMessageWhenWrongPhone = "Numărul de telefon trebuie să conțină 6 sau 9 cifre";
 
     public ProductPage addProductToCart() {
         actionsHelper.clickElement(addToCartButton);
