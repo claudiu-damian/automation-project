@@ -14,11 +14,12 @@ public class FilteredPage extends TabletsPage {
     public String search(String inputBoxSearch) {
         return inputBoxSearch;
     }
+
     public String search(By filter) {
         String wordPresent = actionsHelper.getElement(filter).getText();
         return wordPresent;
     }
-
+  
     public <E> void checkTableFields(E searchInput) {
         String wordExpected;
         String wordPresent = null;
