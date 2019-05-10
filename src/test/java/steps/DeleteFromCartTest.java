@@ -6,7 +6,7 @@ import cucumber.api.java.en.When;
 import project.TestBase;
 import project.pages.CartPage;
 
-public class    DeleteFromCartTest extends TestBase {
+public class DeleteFromCartTest extends TestBase {
     CartPage cartPage = new CartPage();
 
     @Given("is on the Cart page")
