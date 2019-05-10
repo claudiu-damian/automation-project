@@ -9,13 +9,11 @@ import java.util.List;
 
 public class FilteredPage extends TabletsPage {
     public By webElements = By.xpath("//div[@class='views-field-title']");
-    ActionsHelper actionsHelper = new ActionsHelper();
-    AssertHelper assertHelper = new AssertHelper();
-    public String imputeBoxSearch = "Iphone";
+    public String inputBoxSearch = "iphone";
 
 
-    public String search(String imputeBoxSearch) {
-        return imputeBoxSearch;
+    public String search(String inputBoxSearch) {
+        return inputBoxSearch;
     }
 
     public String search(By filter) {
