@@ -1,6 +1,8 @@
 package project.helpers;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import project.TestContext;
 
 import java.util.List;
@@ -51,13 +53,11 @@ public class ActionsHelper {
         return switchToAlert().getText();
     }
 
-    public void acceptAlert() { switchToAlert().accept();}
-
-    public void implicitlyWait(int sec) {
-        getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
+    public void acceptAlert() {
+        switchToAlert().accept();
     }
 
-    public void deleteAllCoockies() {
+    public void deleteAllCookies() {
         getDriver().manage().deleteAllCookies();
     }
 }
