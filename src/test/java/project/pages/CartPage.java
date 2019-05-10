@@ -34,7 +34,7 @@ public class CartPage extends BasePage<CartPage> {
     }
 
     public void checkIfThereAreNoProductsInCart() {
-        actionsHelper.deleteAllCoockies();
+        actionsHelper.deleteAllCookies();
         assertHelper.shouldContain(actionsHelper.getTextElement(cartContent), noContentInCartWarning);
     }
 

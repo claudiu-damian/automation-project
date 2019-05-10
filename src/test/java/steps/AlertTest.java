@@ -48,7 +48,7 @@ public class AlertTest extends TestBase {
     @Then("a confirmation message with some instructions appears")
     public void aConfirmationMessageWithSomeInstructionsAppears() {
         productPage.isOrderConfirmationDisplayed()
-                .isConfimationMessageDisplayed()
+                .isConfirmationMessageDisplayed()
                 .isInstructionDisplayed()
                 .isOkButtonDisplayed()
                 .clickOkButton()
