@@ -9,10 +9,11 @@ import java.util.List;
 
 public class FilteredPage extends TabletsPage {
     public By webElements = By.xpath("//div[@class='views-field-title']");
-    ActionsHelper actionsHelper = new ActionsHelper();
-    AssertHelper assertHelper = new AssertHelper();
     public String imputeBoxSearch = "Iphone";
 
+    public String search(String inputBoxSearch) {
+        return inputBoxSearch;
+    }
 
     public String search(String imputeBoxSearch) {
         return imputeBoxSearch;
@@ -22,7 +23,7 @@ public class FilteredPage extends TabletsPage {
         String wordPresent = actionsHelper.getElement(filter).getText();
         return wordPresent;
     }
-
+  
     public <E> void checkTableFields(E searchInput) {
         String wordExpected;
         String wordPresent = null;
