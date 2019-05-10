@@ -1,25 +1,51 @@
 package project.pages;
 
 import org.openqa.selenium.By;
-import project.helpers.ActionsHelper;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TabletsPage extends BasePage<TabletsPage>{
-    private By tabletsPageHeadding = By.xpath("//div[@class='headding']");
-    public By product = By.xpath("//td[@class='col-1 col-first']");
-    public By filter = By.xpath("//*[@id=\"block-product_filter-67\"]/div/div/ul[1]/li/ul/li[1]/span/a");
+import java.util.List;
+
+import static project.constants.TestConstants.*;
+
+public class TabletsPage extends BasePage<TabletsPage> {
+
     public TabletsPage isTabletsPageDisplayed() {
-        assertHelper.shouldContain(actionsHelper.getTextElement(tabletsPageHeadding), "Tablete");
+        assertHelper.shouldContain(actionsHelper.getTextElement(TABLETS_PAGE_HEADING), "Tablete");
         return this;
     }
-    public void accessFilter(){
+
+    public void accessFilter(By filter) {
         actionsHelper.clickElement(filter);
 
     }
 
     //TODO: make the method generic
     public ProductPage accessProductPage() {
-        actionsHelper.clickElement(product);
+        actionsHelper.clickElement(PRODUCT);
         return new ProductPage();
+    }
+
+    public void checkNextProductButton() {
+        FilteredPage filteredPage = new FilteredPage();
+        WebElement button = actionsHelper.getElement(NEXT_PRODUCTS_BUTTON);
+        List<WebElement> listOfProducts = filteredPage.returnListOfProducts();
+        WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+
+        while (button.isDisplayed()) {
+
+            button.click();
+            FilteredPage newFilteredPage = new FilteredPage();
+            List<WebElement> newListOfProducts = newFilteredPage.returnListOfProducts();
+            if (newListOfProducts.size() >= listOfProducts.size() + MAX_NUMBER_OF_PRODUCTS_PER_PAGE) {
+                listOfProducts = newListOfProducts;
+            } else break;
+            button = actionsHelper.getElement(NEXT_PRODUCTS_BUTTON);
+
+
+        }
+
+
     }
 
 

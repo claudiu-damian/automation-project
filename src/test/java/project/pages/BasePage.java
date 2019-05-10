@@ -1,51 +1,78 @@
 package project.pages;
 
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import project.TestContext;
 
-import static project.constants.TestConstants.*;
-
 public abstract class BasePage<T extends BasePage<T>> extends TestContext {
-
+    private By logo = By.xpath("//div[@id='dynamic-logo']");
+    private By searchBar = By.xpath("//input[@id='edit-keys']");
+    private By subCategories = By.xpath("//div[@id='subcategories']");
+    private By cartButton = By.xpath("//span[@class='cart-icon']");
+    private By phones = By.xpath("//span[contains(text(),'telefoane')]");
+    private By tablets = By.xpath("//li[@class='simple']//a[contains(text(),'tablete')]");
 
     public T isSearchBarPresent() {
-        actionsHelper.isElementDisplayed(SEARCH_BAR);
+        actionsHelper.isElementDisplayed(searchBar);
         return (T) this;
     }
-
-    public T isLogoPresent() {
-        actionsHelper.isElementDisplayed(LOGO);
+    public SearchResultPage searchFor(String text) {
+        actionsHelper.sendStringKeysToElement(searchBar, text);
+        assertHelper.shouldContain("iphone", text);
+        actionsHelper.sendKeysToElement(searchBar, Keys.ENTER);
+        return new SearchResultPage();
+    }
+        public T isLogoPresent() {
+        actionsHelper.isElementDisplayed(logo);
         return (T) this;
     }
 
     public HomePage navigateToHomePage() {
-        actionsHelper.clickElement(LOGO);
+        actionsHelper.clickElement(logo);
         return new HomePage();
     }
 
     public T areSubCategoriesDisplayed() {
-        actionsHelper.isElementDisplayed(SUB_CATEGORIES);
+        actionsHelper.isElementDisplayed(subCategories);
         return (T) this;
     }
 
     public CartPage navigateToCartPage() {
-        actionsHelper.clickElement(CART_BUTTON);
+        actionsHelper.clickElement(cartButton);
         return new CartPage();
     }
 
     public TabletsPage enterTabletesPage() {
-        actionsHelper.clickElement(PHONES);
+        actionsHelper.clickElement(phones);
         areSubCategoriesDisplayed();
-        actionsHelper.clickElement(TABLETS);
+        actionsHelper.clickElement(tablets);
         return new TabletsPage();
     }
-//    public TabletsPage enterWearalePage(){
-//        actionsHelper.clickElement();
-//        return new TabletsPage();
-//    }
-
+    public void waitForPageLoaded() {
+        ExpectedCondition<Boolean> expectation = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+                    }
+                };
+        try {
+            Thread.sleep(1000);
+            WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+            wait.until(expectation);
+        } catch (Throwable error) {
+            Assert.fail("Timeout waiting for Page Load Request to complete.");
+        }
+    }
+}
 /*    public ProductPage accessProductPage(String productName) {
-        By PRODUCT = By.xpath(String.format("//a[contains(text(),'%s')]", productName));
-        actionsHelper.clickElement(PRODUCT);
+        By product = By.xpath(String.format("//a[contains(text(),'%s')]", productName));
+        actionsHelper.clickElement(product);
         return new ProductPage();
     }*/
-}
+
