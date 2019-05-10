@@ -2,8 +2,8 @@ package project.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import project.helpers.LoggerHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,49 +18,32 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
         return this;
     }
 
-    public void checkFields(int rowNumber, int columnNumber, String wordPresent) {
-        for (int row = 1; row <= rowNumber; row++)
-            for (int column = 1; column <= columnNumber; column++) {
-                By tableField = By.xpath(String.format("//tr[@class='row-%s row-first']//td[@class='col-%s']", row, column));
-                assertHelper.shouldContain(actionsHelper.getTextElement(tableField), wordPresent);
-                System.out.println("massiv");
-            }
-
-    }
-
-    public int countTableRows() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        WebElement tableElements = actionsHelper.getElement(By.xpath("//*[@id=\"page-content\"]/div/div[2]/div[2]/table"));
-        List<WebElement> totalRowsList = tableElements.findElements(By.tagName("tr"));
-        int rowNumber = totalRowsList.size() - 1;
-        System.out.println(totalRowsList.size());
-//        System.out.println(rowNumber);
-        return rowNumber;
-    }
-
-    public int countTableColumns() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        WebElement tableElements = actionsHelper.getElement(By.xpath("//*[@id=\"page-content\"]/div/div[2]/div[2]/table"));
-        List<WebElement> totalColumnList = tableElements.findElements(By.tagName("td"));
-        int columnNumber = totalColumnList.size() - 1;
-        System.out.println(totalColumnList.size());
-//        System.out.println(columnNumber);
-        return columnNumber;
-    }
-
     public SearchResultPage verifyThatSearchIsDone() {
-        loggerHelper.logger.info("Step1");
-        System.out.println("four");
-        checkFields(countTableRows(), countTableColumns(), "iPhone");
-        System.out.println("five");
+        List<WebElement> expectedSearchCriteria = actionsHelper.getElements(By.xpath("//*[@id=\"page-content\"]/div/div[2]/div[2]/table"));
+        List<String> expectedSearch = new ArrayList<String>();
+        for (WebElement eSC : expectedSearchCriteria) {
+            expectedSearch.add(eSC.getText());
+        }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        actionsHelper.clickElement(By.xpath("//a[contains(text(),'telefoane mobile')]"));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        actionsHelper.clickElement(By.xpath("//a[@class='selected-filter']"));
+        List<WebElement> actualSearchCriteria = actionsHelper.getElements(By.xpath("//*[@id=\"page-content\"]/div/div[2]/div[2]/table"));
+        List<String> actualSearch = new ArrayList<String>();
+        for (WebElement aSC : actualSearchCriteria) {
+            actualSearch.add(aSC.getText());
+        }
+        System.out.println(actualSearch);
+        System.out.println(actualSearch.containsAll(expectedSearch));
         return this;
     }
+
 }
