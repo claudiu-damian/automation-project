@@ -16,7 +16,7 @@ public class Filter {
 
     @Then("filtered array of items is displayed")
     public void filteredArray() {
-        filteredPage.checkTableFields();
+        filteredPage.checkTableFields(filteredPage.filter);
 
     }
 }
