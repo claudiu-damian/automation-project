@@ -15,10 +15,6 @@ public class FilteredPage extends TabletsPage {
         return inputBoxSearch;
     }
 
-    public String search(String imputeBoxSearch) {
-        return imputeBoxSearch;
-    }
-
     public String search(By filter) {
         String wordPresent = actionsHelper.getElement(filter).getText();
         return wordPresent;

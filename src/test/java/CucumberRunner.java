@@ -7,15 +7,11 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"progress","html:target/site/cucumber-pretty","json:target/cucumber-report/cucumber.json"},
         features = {"src/test/resources/features/"},
-        tags = {"@Claudiu", "~@wip","~@notImplemented","@sanity"},
+        tags = "@Claudiu",
         glue = {"project.hooks",
                 "steps","com.StepDefinitions"},
-        dryRun = false,
         strict = true,
-        monochrome = true,
-        plugin = { "progress",
-                "html:target/Cucumber"
-        }
+        monochrome = true
 )
 
 public class CucumberRunner {
