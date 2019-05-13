@@ -20,21 +20,12 @@ public class Filter extends FilteredPage {
     @Then("filtered array of items is displayed")
     public void filteredArray() {
         checkTableFields(FILTER);
-
     }
-
 
     @Then("Items are ordered in ascending order by price")
     public void itemsAreOrderedInAscendingOrderByPrice() {
         checkNextProductButton();
         chechSorting();
-    }
-
-
-
-    @And("user looks throw all products before sorting")
-    public void userLooksThrowAllProductsBeforeSorting() {
-
     }
 
     @When("User clicks on preț: mare spre mic")

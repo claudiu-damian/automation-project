@@ -14,9 +14,9 @@ import static project.constants.TestConstants.PATH_OF_PRODUCTS;
 
 public class FilteredPage extends TabletsPage {
 
+    private List<WebElement> newList ;
     private ActionsHelper actionsHelper = new ActionsHelper();
     private AssertHelper assertHelper = new AssertHelper();
-
 
     public String search(String imputeBoxSearch) {
         return imputeBoxSearch;
@@ -52,12 +52,11 @@ public class FilteredPage extends TabletsPage {
         List<WebElement> webElements = actionsHelper.getElements(PATH_OF_PRODUCTS);
         return webElements;
     }
-    public List<WebElement> newList;
 
-
-    public List<WebElement> getList(List<WebElement> list){
+    public List<WebElement> getList(List<WebElement> list) {
         return newList = list;
     }
+
     public List<WebElement> listProductsFromUnsortedPage() {
 
         checkNextProductButton();
@@ -73,7 +72,7 @@ public class FilteredPage extends TabletsPage {
 //        System.out.println(beforeSorting.get(1).toString());
 //        afterSorting.equals(beforeSorting);
         ArrayList<String> obtainedList = new ArrayList<>();
-        List<WebElement> elementList =newList;
+        List<WebElement> elementList = newList;
 
         for (WebElement we : elementList) {
             obtainedList.add(we.getText());
