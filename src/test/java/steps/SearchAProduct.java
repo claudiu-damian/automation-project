@@ -14,7 +14,7 @@ public class SearchAProduct extends TestBase {
     private HomePage homePage = new HomePage();
 
     @Given("user is on the main page")
-    public void userIsOnTheMainPage() {
+    public void userIsOnTheMainPageSearch() {
         accessWebPage()
                 .isSlideShowPresent()
                 .isSearchBarPresent()

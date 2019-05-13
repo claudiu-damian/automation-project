@@ -12,7 +12,7 @@ public class ContactsLocationVerification extends TestBase {
     private ContactInfoLocationPage contactInfoLocationPage = new ContactInfoLocationPage();
 
     @Given("user is on the main page")
-    public void userIsOnTheMainPage() {
+    public void userIsOnTheMainPageContact() {
         accessWebPage()
                 .isSlideShowPresent()
                 .isSearchBarPresent()
@@ -22,7 +22,7 @@ public class ContactsLocationVerification extends TestBase {
 
     @When("user clicks on adress button")
     public void userEntersAProduct() {
-        homePage.goToStorageAdress();
+        homePage.goToStorageAddress();
     }
 
     @Then("user is redirected on location page")
