@@ -8,8 +8,9 @@ public class ProductPage extends BasePage<ProductPage> {
         return this;
     }
 
-    public ProductPage areImageOfProductDisplayed() {
+    public ProductPage isImageOfProductDisplayed() {
         actionsHelper.isElementDisplayed(image);
+        actionsHelper.clickElement(image);
         return this;
     }
 

@@ -19,7 +19,6 @@ public class DriverHelper implements Cloneable {
         }
     }
 
-
     public static WebDriver getDriver() {
         return driver;
     }
@@ -35,6 +34,5 @@ public class DriverHelper implements Cloneable {
         }
         return isActive;
     }
-
 }
 

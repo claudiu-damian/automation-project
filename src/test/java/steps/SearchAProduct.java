@@ -1,7 +1,5 @@
 package steps;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import project.TestBase;
@@ -17,7 +15,6 @@ public class SearchAProduct extends TestBase {
     public void userEntersInSearchAProduct() {
         searchResultPage.searchFor("iphone").
                 verifyThatSearchIsDone();
-
     }
 
     @Then("the list of search products is displayed on the search result page")

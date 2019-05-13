@@ -5,7 +5,7 @@ Feature: Select Vonino Navo P and watch its pictures
     And selects tablets subcategory
     When user enters a product
 
-  @Sergiu
+  @ToFix
   Scenario: User try slide pictures of product
     Given user on page with Vonino Navo P
     When user select to see picture of product
