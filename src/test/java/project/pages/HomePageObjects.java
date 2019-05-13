@@ -8,5 +8,4 @@ public class HomePageObjects {
     static final By homePageAddressInfo = By.xpath("//span[@class='ctatext-location']");
     static final By twitterButton = By.xpath("//a[contains(text(),'twitter')]");
     static final By facebookButton = By.xpath("//a[contains(text(),'facebook')]");
-
 }

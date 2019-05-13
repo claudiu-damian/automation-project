@@ -2,11 +2,11 @@ package project.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 import static project.constants.TestConstants.*;
+import static project.pages.FilteredPageObjects.nextProductButton;
 
 public class TabletsPage extends BasePage<TabletsPage> {
     private By tabletsPageHeadding = By.xpath("//div[@class='headding']");
@@ -30,7 +30,7 @@ public class TabletsPage extends BasePage<TabletsPage> {
 
     public void checkNextProductButton() {
         FilteredPage filteredPage = new FilteredPage();
-        WebElement button = actionsHelper.getElement(NEXT_PRODUCTS_BUTTON);
+        WebElement button = actionsHelper.getElement(nextProductButton);
         List<WebElement> listOfProducts = filteredPage.returnListOfProducts();
         waiterHelper.implicitlyWait(30);
 
@@ -42,13 +42,7 @@ public class TabletsPage extends BasePage<TabletsPage> {
             if (newListOfProducts.size() >= listOfProducts.size() + MAX_NUMBER_OF_PRODUCTS_PER_PAGE) {
                 listOfProducts = newListOfProducts;
             } else break;
-            button = actionsHelper.getElement(NEXT_PRODUCTS_BUTTON);
-
-
+            button = actionsHelper.getElement(nextProductButton);
         }
-
-
     }
-
-
 }

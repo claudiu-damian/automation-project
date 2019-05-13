@@ -3,12 +3,10 @@ package steps;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import project.TestBase;
-import project.pages.FilteredPage;
 import project.pages.TabletsPage;
 
 public class NextProductsButton extends TestBase {
     TabletsPage tabletsPage = new TabletsPage();
-    FilteredPage filteredPage = new FilteredPage();
 
     @Then("selects laptops subcategory")
     public void selectsLaptopsSubcategory() {
@@ -20,5 +18,4 @@ public class NextProductsButton extends TestBase {
     public void clicksOnUrmătoareleProduseIfThereAreOverProducts() {
         tabletsPage.checkNextProductButton();
     }
-
 }

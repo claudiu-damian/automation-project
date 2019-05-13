@@ -19,7 +19,7 @@ public class HomePage extends BasePage<HomePage> {
     }
 
     public HomePage goToStorageAddress() {
-        actionsHelper.navigateTo(TestConstants.CONTACTLOCATIONURL);
+        actionsHelper.navigateTo(TestConstants.CONTACT_LOCATION_URL);
         return this;
     }
 

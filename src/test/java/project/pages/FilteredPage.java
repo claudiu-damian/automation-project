@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static project.constants.TestConstants.PATH_OF_PRODUCTS;
+import static project.pages.FilteredPageObjects.*;
 
 public class FilteredPage extends TabletsPage {
 
@@ -61,12 +61,11 @@ public class FilteredPage extends TabletsPage {
             wordExpected = element.getText();
             assertHelper.shouldContain(wordExpected, wordPresent);
         }
-
     }
 
     public List<WebElement> returnListOfProducts() {
         waiterHelper.waitForPageLoaded();
-        List<WebElement> webElements = actionsHelper.getElements(PATH_OF_PRODUCTS);
+        List<WebElement> webElements = actionsHelper.getElements(pathOfProducts);
         return webElements;
     }
 
@@ -80,8 +79,5 @@ public class FilteredPage extends TabletsPage {
         }
         Collections.sort(obtainedList);
         Assert.assertEquals(obtainedSortedList, obtainedList);
-
-
     }
-
 }

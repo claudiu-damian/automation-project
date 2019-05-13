@@ -53,10 +53,6 @@ public class ActionsHelper {
         return switchToAlert().getText();
     }
 
-    public void acceptAlert() {
-        switchToAlert().accept();
-    }
-
     public void deleteAllCookies() {
         getDriver().manage().deleteAllCookies();
     }

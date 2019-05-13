@@ -7,13 +7,10 @@ import project.helpers.DriverHelper;
 import static project.helpers.DriverHelper.getDriver;
 
 public class StepHooks {
-
-
     @Before
     public void initDriver() {
         DriverHelper.initDriver();
     }
-
 
     @After
     public void stopDriver() {

@@ -25,7 +25,6 @@ public class DriverFactory {
         else if (browser.equalsIgnoreCase(BROWSER_IE)) {
             return buildInternetExplorer();
         }
-
         throw new Error("Unsupported browser.");
     }
 
