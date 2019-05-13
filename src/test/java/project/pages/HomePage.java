@@ -22,7 +22,7 @@ public class HomePage extends BasePage<HomePage> {
         actionsHelper.getElement(homePageAdressInfo).isDisplayed();
         return this;
     }
-    public HomePage goToStorageAdress() {
+    public HomePage goToStorageAddress() {
         actionsHelper.navigateTo(TestConstants.CONTACTLOCATIONURL);
         return this;
     }

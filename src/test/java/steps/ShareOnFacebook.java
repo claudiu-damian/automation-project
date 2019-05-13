@@ -13,7 +13,7 @@ public class ShareOnFacebook extends TestBase {
     private SocialMediaPages socialMediaPages = new SocialMediaPages();
 
     @Given("user is on the main page")
-    public void userIsOnTheMainPage() {
+    public void userIsOnTheMainPageFacebook() {
         accessWebPage()
                 .isSlideShowPresent()
                 .isSearchBarPresent()
