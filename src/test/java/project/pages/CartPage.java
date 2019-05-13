@@ -5,12 +5,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static project.constants.TestConstants.*;
+import static project.pages.CartPageObjects.*;
 
 public class CartPage extends BasePage<CartPage> {
-
-
-
     //TODO: make the column number generic
     public void isProductPresent(String wordPresent) {
         checkTableFields(countTableRows(), 2, wordPresent);
@@ -31,12 +28,12 @@ public class CartPage extends BasePage<CartPage> {
     }
 
     public void pressDeleteFromCartButton() {
-        actionsHelper.clickElement(DELETE_FROM_CART_BUTTON);
+        actionsHelper.clickElement(deleteFromCartButton);
     }
 
     public void checkIfThereAreNoProductsInCart() {
-        actionsHelper.deleteAllCoockies();
-        assertHelper.shouldContain(actionsHelper.getTextElement(CART_CONTENT), NO_CONTENT_IN_CART_WARNING);
+        actionsHelper.deleteAllCookies();
+        assertHelper.shouldContain(actionsHelper.getTextElement(cartContent), noContentInCartWarning);
     }
 
 }
