@@ -1,8 +1,13 @@
 package project.pages;
 
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import project.TestContext;
 
 public abstract class BasePage<T extends BasePage<T>> extends TestContext {
@@ -17,8 +22,13 @@ public abstract class BasePage<T extends BasePage<T>> extends TestContext {
         actionsHelper.isElementDisplayed(searchBar);
         return (T) this;
     }
-
-    public T isLogoPresent() {
+    public SearchResultPage searchFor(String text) {
+        actionsHelper.sendStringKeysToElement(searchBar, text);
+        assertHelper.shouldContain("iphone", text);
+        actionsHelper.sendKeysToElement(searchBar, Keys.ENTER);
+        return new SearchResultPage();
+    }
+        public T isLogoPresent() {
         actionsHelper.isElementDisplayed(logo);
         return (T) this;
     }
@@ -45,9 +55,10 @@ public abstract class BasePage<T extends BasePage<T>> extends TestContext {
         return new TabletsPage();
     }
 
+}
 /*    public ProductPage accessProductPage(String productName) {
         By product = By.xpath(String.format("//a[contains(text(),'%s')]", productName));
         actionsHelper.clickElement(product);
         return new ProductPage();
     }*/
-}
+
