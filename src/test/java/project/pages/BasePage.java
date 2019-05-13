@@ -1,19 +1,16 @@
 package project.pages;
 
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import project.TestContext;
 
 public abstract class BasePage<T extends BasePage<T>> extends TestContext {
     private By logo = By.xpath("//div[@id='dynamic-logo']");
     private By searchBar = By.xpath("//input[@id='edit-keys']");
     private By subCategories = By.xpath("//div[@id='subcategories']");
+    private By nextImageRightButton = By.xpath("//button[@class='slider-arrow slider-arrow-right']");
+    private By nextImageLeftButton = By.xpath("//button[@class='slider-arrow slider-arrow-left']");
     private By cartButton = By.xpath("//span[@class='cart-icon']");
     private By phones = By.xpath("//span[contains(text(),'telefoane')]");
     private By tablets = By.xpath("//li[@class='simple']//a[contains(text(),'tablete')]");
@@ -22,13 +19,8 @@ public abstract class BasePage<T extends BasePage<T>> extends TestContext {
         actionsHelper.isElementDisplayed(searchBar);
         return (T) this;
     }
-    public SearchResultPage searchFor(String text) {
-        actionsHelper.sendStringKeysToElement(searchBar, text);
-        assertHelper.shouldContain("iphone", text);
-        actionsHelper.sendKeysToElement(searchBar, Keys.ENTER);
-        return new SearchResultPage();
-    }
-        public T isLogoPresent() {
+
+    public T isLogoPresent() {
         actionsHelper.isElementDisplayed(logo);
         return (T) this;
     }
@@ -54,11 +46,20 @@ public abstract class BasePage<T extends BasePage<T>> extends TestContext {
         actionsHelper.clickElement(tablets);
         return new TabletsPage();
     }
-
-}
+    public SearchResultPage searchFor(String text) {
+        actionsHelper.sendStringKeysToElement(searchBar, text);
+        assertHelper.shouldContain("iphone", text);
+        actionsHelper.sendKeysToElement(searchBar, Keys.ENTER);
+        return new SearchResultPage();
+    }
+    public T nextImageOfProductButton(){
+        actionsHelper.isElementDisplayed(nextImageRightButton);
+        actionsHelper.isElementDisplayed(nextImageLeftButton);
+        return (T) this;
+    }
 /*    public ProductPage accessProductPage(String productName) {
         By product = By.xpath(String.format("//a[contains(text(),'%s')]", productName));
         actionsHelper.clickElement(product);
         return new ProductPage();
     }*/
-
+}

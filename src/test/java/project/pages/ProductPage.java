@@ -8,6 +8,11 @@ public class ProductPage extends BasePage<ProductPage> {
         return this;
     }
 
+    public ProductPage areImageOfProductDisplayed() {
+        actionsHelper.isElementDisplayed(image);
+        return this;
+    }
+
     public ProductPage areProductSpecificationsDisplayed() {
         actionsHelper.isElementDisplayed(specifications);
         return this;
@@ -84,6 +89,21 @@ public class ProductPage extends BasePage<ProductPage> {
 
     public ProductPage completePhoneNumberField(String phoneNumber) {
         actionsHelper.sendStringKeysToElement(phoneNumberField, phoneNumber);
+        return this;
+    }
+
+    public ProductPage checkThatImagesAreSlide() {
+        actionsHelper.isElementDisplayed(firstSliderPicture);
+        actionsHelper.clickElement(nextPictureRightSlideButton);
+        actionsHelper.isElementDisplayed(secondSliderPicture);
+        actionsHelper.clickElement(nextPictureRightSlideButton);
+        actionsHelper.isElementDisplayed(thirdSliderPicture);
+        actionsHelper.clickElement(nextPictureRightSlideButton);
+        actionsHelper.isElementDisplayed(fourthSliderPicture);
+        actionsHelper.clickElement(nextPictureRightSlideButton);
+        actionsHelper.isElementDisplayed(fiveSliderPicture);
+        actionsHelper.clickElement(nextPictureRightSlideButton);
+        actionsHelper.isElementDisplayed(lastSliderPicture);
         return this;
     }
 }
