@@ -11,15 +11,6 @@ public class ShareOnFacebook extends TestBase {
     private HomePage homePage = new HomePage();
     private SocialMediaPages socialMediaPages = new SocialMediaPages();
 
-    @Given("user is on the main page")
-    public void userIsOnTheMainPageFacebook() {
-        accessWebPage()
-                .isSlideShowPresent()
-                .isSearchBarPresent()
-                .isLogoPresent()
-                .isContactInfoPresent()
-                .isSocialMediaPresent();
-    }
 
     @When("user clicks on Facebook button")
     public void userEntersAProduct() {

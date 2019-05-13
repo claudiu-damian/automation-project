@@ -11,15 +11,6 @@ public class ContactsLocationVerification extends TestBase {
     private HomePage homePage = new HomePage();
     private ContactInfoLocationPage contactInfoLocationPage = new ContactInfoLocationPage();
 
-    @Given("user is on the main page")
-    public void userIsOnTheMainPageContact() {
-        accessWebPage()
-                .isSlideShowPresent()
-                .isSearchBarPresent()
-                .isLogoPresent()
-                .isContactInfoPresent();
-    }
-
     @When("user clicks on adress button")
     public void userEntersAProduct() {
         homePage.goToStorageAddress();
