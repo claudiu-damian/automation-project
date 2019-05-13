@@ -16,4 +16,11 @@ public class ProductPageObjects {
     static final By okButton = By.xpath("//div[@class='ok-button']");
     static final By confirmationText = By.xpath("//span[@class='span1']");
     static final By instructionText = By.xpath("//span[@class='span2']");
+    static final By nextPictureRightSlideButton = By.xpath("//button[@class='slider-arrow slider-arrow-right']");
+    static final By firstSliderPicture = By.xpath("//div[@class='zaps-slider-image first']//img[@class='imagecache imagecache-product-large imagecache-default imagecache-product-large_default']");
+    static final By secondSliderPicture = By.xpath("///div[@class='holder']//div[2]//img[1]");
+    static final By thirdSliderPicture = By.xpath("//div[@class='container-1200']//div[3]//img[1]");
+    static final By fourthSliderPicture = By.xpath("//div[@class='container-1200']//div[4]//img[1]");
+    static final By fiveSliderPicture = By.xpath("//div[@class='container-1200']//div[5]//img[1]");
+    static final By lastSliderPicture = By.xpath("//div[@class='zaps-slider-image last']//img[@class='imagecache imagecache-product-large imagecache-default imagecache-product-large_default']");
 }
