@@ -48,7 +48,7 @@ public class FilteredPage extends TabletsPage {
     }
 
     public List<WebElement> returnListOfProducts() {
-        waitForPageLoaded();
+        waiterHelper.waitForPageLoaded();
         List<WebElement> webElements = actionsHelper.getElements(PATH_OF_PRODUCTS);
         return webElements;
     }
