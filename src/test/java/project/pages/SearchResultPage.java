@@ -32,5 +32,4 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
         }
         return this;
     }
-
 }
