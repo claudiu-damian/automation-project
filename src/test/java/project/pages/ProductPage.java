@@ -1,5 +1,7 @@
 package project.pages;
 
+import org.openqa.selenium.By;
+
 import static project.pages.ProductPageObjects.*;
 
 public class ProductPage extends BasePage<ProductPage> {
@@ -7,7 +9,10 @@ public class ProductPage extends BasePage<ProductPage> {
         actionsHelper.isElementDisplayed(description);
         return this;
     }
-
+public ProductPage areImageOfProductDisplayed(){
+        actionsHelper.isElementDisplayed(image);
+        return this;
+}
     public ProductPage areProductSpecificationsDisplayed() {
         actionsHelper.isElementDisplayed(specifications);
         return this;
@@ -84,6 +89,20 @@ public class ProductPage extends BasePage<ProductPage> {
 
     public ProductPage completePhoneNumberField(String phoneNumber) {
         actionsHelper.sendStringKeysToElement(phoneNumberField, phoneNumber);
+        return this;
+    }
+    public ProductPage checkThatImagesAreSlide(){
+        actionsHelper.isElementDisplayed(By.xpath("//div[@class='zaps-slider-image first']//img[@class='imagecache imagecache-product-large imagecache-default imagecache-product-large_default']"));
+        actionsHelper.clickElement(By.xpath("//button[@class='slider-arrow slider-arrow-right']"));
+        actionsHelper.isElementDisplayed(By.xpath("//div[@class='holder']//div[2]//img[1]"));
+        actionsHelper.clickElement(By.xpath("//button[@class='slider-arrow slider-arrow-right']"));
+        actionsHelper.isElementDisplayed(By.xpath("//div[@class='container-1200']//div[3]//img[1]"));
+        actionsHelper.clickElement(By.xpath("//button[@class='slider-arrow slider-arrow-right']"));
+        actionsHelper.isElementDisplayed(By.xpath("//div[@class='container-1200']//div[4]//img[1]"));
+        actionsHelper.clickElement(By.xpath("//button[@class='slider-arrow slider-arrow-right']"));
+        actionsHelper.isElementDisplayed(By.xpath("//div[@class='container-1200']//div[5]//img[1]"));
+        actionsHelper.clickElement(By.xpath("//button[@class='slider-arrow slider-arrow-right']"));
+        actionsHelper.isElementDisplayed(By.xpath("//div[@class='zaps-slider-image last']//img[@class='imagecache imagecache-product-large imagecache-default imagecache-product-large_default']"));
         return this;
     }
 }
