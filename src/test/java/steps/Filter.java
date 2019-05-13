@@ -7,8 +7,6 @@ import project.pages.FilteredPage;
 import project.pages.TabletsPage;
 
 
-
-
 public class Filter extends FilteredPage {
     //SubmenuPage
     public static final By tabletsPageHeadding = By.xpath("//div[@class='headding']");
