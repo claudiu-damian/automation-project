@@ -3,8 +3,6 @@ package project.pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import project.helpers.ActionsHelper;
-import project.helpers.AssertHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,9 +12,30 @@ import static project.constants.TestConstants.PATH_OF_PRODUCTS;
 
 public class FilteredPage extends TabletsPage {
 
-    private List<WebElement> newList ;
-    private ActionsHelper actionsHelper = new ActionsHelper();
-    private AssertHelper assertHelper = new AssertHelper();
+    private List<WebElement> newList;
+
+    private List<String> productsStringList = new ArrayList<>();
+
+    public List<WebElement> getNewList() {
+        return this.newList = returnListOfProducts();
+    }
+
+    public void setNewList(List<WebElement> list) {
+        this.newList = list;
+    }
+
+    public List<String> getProductsStringList() {
+        return this.productsStringList;
+    }
+
+    public void setProductsStringList(List<WebElement> newList) {
+
+        List<WebElement> elementList = newList;
+
+        for (WebElement we : elementList) {
+            this.productsStringList.add(we.getText().toLowerCase());
+        }
+    }
 
     public String search(String imputeBoxSearch) {
         return imputeBoxSearch;
@@ -36,13 +55,11 @@ public class FilteredPage extends TabletsPage {
             wordPresent = search((By) searchInput);
         }
 
-
         getDriver().manage().deleteAllCookies();
         List<WebElement> elements = returnListOfProducts();
         for (WebElement element : elements) {
             wordExpected = element.getText();
             assertHelper.shouldContain(wordExpected, wordPresent);
-
         }
 
     }
@@ -53,37 +70,16 @@ public class FilteredPage extends TabletsPage {
         return webElements;
     }
 
-    public List<WebElement> getList(List<WebElement> list) {
-        return newList = list;
-    }
-
-    public List<WebElement> listProductsFromUnsortedPage() {
-
-        checkNextProductButton();
-        return returnListOfProducts();
-
-    }
-
     public void chechSorting() {
 
-//        List beforeSorting = listProductsFromUnsortedPage();
-//        List afterSorting = returnListOfProducts();
-//        Collections.s(beforeSorting, );
-//        System.out.println(beforeSorting.get(1).toString());
-//        afterSorting.equals(beforeSorting);
-        ArrayList<String> obtainedList = new ArrayList<>();
-        List<WebElement> elementList = newList;
-
-        for (WebElement we : elementList) {
-            obtainedList.add(we.getText());
-        }
-        ArrayList<String> obtainedSortedList = new ArrayList<>();
+        List<String> obtainedList = getProductsStringList();
+        List<String> obtainedSortedList = new ArrayList<>();
         List<WebElement> sortedList = returnListOfProducts();
         for (WebElement we : sortedList) {
-            obtainedSortedList.add(we.getText());
+            obtainedSortedList.add(we.getText().toLowerCase());
         }
         Collections.sort(obtainedList);
-        Assert.assertTrue(obtainedSortedList.equals(obtainedList));
+        Assert.assertEquals(obtainedSortedList, obtainedList);
 
 
     }

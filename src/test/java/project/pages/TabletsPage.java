@@ -32,7 +32,7 @@ public class TabletsPage extends BasePage<TabletsPage> {
         FilteredPage filteredPage = new FilteredPage();
         WebElement button = actionsHelper.getElement(NEXT_PRODUCTS_BUTTON);
         List<WebElement> listOfProducts = filteredPage.returnListOfProducts();
-        WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+        waiterHelper.implicitlyWait(30);
 
         while (button.isDisplayed()) {
 
