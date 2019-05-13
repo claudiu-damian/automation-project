@@ -35,5 +35,4 @@ public class CartPage extends BasePage<CartPage> {
         actionsHelper.deleteAllCookies();
         assertHelper.shouldContain(actionsHelper.getTextElement(cartContent), noContentInCartWarning);
     }
-
 }
