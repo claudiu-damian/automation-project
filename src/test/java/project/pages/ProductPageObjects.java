@@ -6,6 +6,7 @@ public class ProductPageObjects {
     static final By addToCartButton = By.xpath("//div[@id='add-to-cart']");
     static final By description = By.xpath("//div[@class='description-text']");
     static final By specifications = By.xpath("//div[@id='specs-main']");
+    static final By image = By.xpath("//div[@class='zaps-slider-image first']");
     static final By orderNowButton = By.xpath("//div[@id='product-order']");
     static final By confirmOrderButton = By.xpath("//form[@id='zaps-byprod-buynow-form']//div[@class='b-confirm']");
     static final By instructionForInstantOrder = By.xpath("//div[contains(text(),'Pentru a cumpăra rapid acest produs completează fo')]");
