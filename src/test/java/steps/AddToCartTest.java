@@ -22,7 +22,9 @@ public class AddToCartTest extends TestBase {
         accessWebPage()
                 .isSlideShowPresent()
                 .isSearchBarPresent()
-                .isLogoPresent();
+                .isLogoPresent()
+                .isContactInfoPresent()
+                .isSocialMediaPresent();
     }
 
     @And("selects tablets subcategory")

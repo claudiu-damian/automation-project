@@ -28,12 +28,6 @@ public class ImageOfProductVerififcation extends TestBase {
 
     @Then("the pictures of product are visible on the page")
     public void nextImageOfProductAppears() {
-        productPage.areImageOfProductDisplayed()
-                .checkThatImagesAreSlide();
-    }
-
-    @And("user is navigated on main page")
-    public void userIsReadyForNewSearch() {
-        homePage.navigateToHomePage();
+        productPage.checkThatImagesAreSlide();
     }
 }

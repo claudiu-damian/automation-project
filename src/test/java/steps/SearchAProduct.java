@@ -13,14 +13,6 @@ public class SearchAProduct extends TestBase {
     private SearchResultPage searchResultPage = new SearchResultPage();
     private HomePage homePage = new HomePage();
 
-    @Given("user is on the main page")
-    public void userIsOnTheMainPageSearch() {
-        accessWebPage()
-                .isSlideShowPresent()
-                .isSearchBarPresent()
-                .isLogoPresent();
-    }
-
     @When("user search a product")
     public void userEntersInSearchAProduct() {
         searchResultPage.searchFor("iphone").
@@ -33,8 +25,4 @@ public class SearchAProduct extends TestBase {
         searchResultPage.isSearchResultPageDisplayed();
     }
 
-    @And("user is navigated on main page")
-    public void userIsReadyForNewSearch() {
-        homePage.navigateToHomePage();
-    }
 }

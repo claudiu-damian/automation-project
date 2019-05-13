@@ -10,4 +10,3 @@ Feature: Select Vonino Navo P and watch its pictures
     Given user on page with Vonino Navo P
     When user select to see picture of product
     Then the pictures of product are visible on the page
-    And user is navigated on main page
