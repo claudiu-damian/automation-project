@@ -7,17 +7,16 @@ import project.pages.FilteredPage;
 import project.pages.TabletsPage;
 
 
-
-
 public class Filter extends FilteredPage {
     //SubmenuPage
-    public static final By TABLETS_PAGE_HEADING = By.xpath("//div[@class='headding']");
-    public static final By PRODUCT = By.xpath("//td[@class='col-1 col-first']");
+    public static final By tabletsPageHeadding = By.xpath("//div[@class='headding']");
+    public static final By product = By.xpath("//td[@class='col-1 col-first']");
     public static final By filter = By.xpath("//*[@id=\"block-product_filter-67\"]/div/div/ul[1]/li/ul/li[5]/span/a");
+    static final By filterDescendingButton = By.xpath("//a[@class='desc sort-price-asc']");
+    static final By filterAlphabeticDescending = By.linkText("alfabetic: A spre Z");
     //
     TabletsPage tabletsPage = new TabletsPage();
     FilteredPage filteredPage = new FilteredPage();
-    static final By filterAcendingButton = By.xpath("//a[@class='desc sort-price-asc']");
 
     @When("selects filter by name \"Acer\"")
     public void selectsAFilter() {
@@ -29,15 +28,16 @@ public class Filter extends FilteredPage {
         checkTableFields(filter);
     }
 
-    @Then("Items are ordered in ascending order by price")
+    @Then("Items are ordered in ascending order by alphabet")
     public void itemsAreOrderedInAscendingOrderByPrice() {
         checkNextProductButton();
         chechSorting();
     }
 
-    @When("User clicks on preț: mare spre mic")
-    public void userClicksOnPrețMareSpreMic() {
-        getList(listProductsFromUnsortedPage());
-        accessFilter(filterAcendingButton);
+    @When("User clicks on alphabetic sort")
+    public void userClicksOnAlphabeticSort() {
+        checkNextProductButton();
+        setProductsStringList(getNewList());
+        accessFilter(filterAlphabeticDescending);
     }
 }

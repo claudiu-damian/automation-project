@@ -20,16 +20,19 @@ public class SearchAProduct extends TestBase {
                 .isSearchBarPresent()
                 .isLogoPresent();
     }
+
     @When("user search a product")
     public void userEntersInSearchAProduct() {
         searchResultPage.searchFor("iphone").
                 verifyThatSearchIsDone();
 
     }
+
     @Then("the list of search products is displayed on the search result page")
     public void theSearchedProductIsDisplayed() {
         searchResultPage.isSearchResultPageDisplayed();
-        }
+    }
+
     @And("user is navigated on main page")
     public void userIsReadyForNewSearch() {
         homePage.navigateToHomePage();

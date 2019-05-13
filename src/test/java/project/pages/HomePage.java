@@ -2,6 +2,7 @@ package project.pages;
 
 import project.constants.TestConstants;
 
+
 import static project.pages.HomePageObjects.*;
 
 public class HomePage extends BasePage<HomePage> {
@@ -13,7 +14,7 @@ public class HomePage extends BasePage<HomePage> {
 
     public HomePage isContactInfoPresent() {
         actionsHelper.getElement(homePagePhoneInfo).isDisplayed();
-        actionsHelper.getElement(homePageAdressInfo).isDisplayed();
+        actionsHelper.getElement(homePageAddressInfo).isDisplayed();
         return this;
     }
 

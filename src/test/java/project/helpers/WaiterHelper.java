@@ -21,6 +21,7 @@ public class WaiterHelper {
     public void implicitlyWait(int sec) {
         getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
     }
+
     public void waitForPageLoaded() {
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
         try {
