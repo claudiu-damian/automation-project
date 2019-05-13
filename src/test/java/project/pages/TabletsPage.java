@@ -9,9 +9,11 @@ import java.util.List;
 import static project.constants.TestConstants.*;
 
 public class TabletsPage extends BasePage<TabletsPage> {
-
+    private By tabletsPageHeadding = By.xpath("//div[@class='headding']");
+    public By product = By.xpath("//td[@class='col-1 col-first']");
+    public By filter = By.xpath("//*[@id=\"block-product_filter-67\"]/div/div/ul[1]/li/ul/li[1]/span/a");
     public TabletsPage isTabletsPageDisplayed() {
-        assertHelper.shouldContain(actionsHelper.getTextElement(TABLETS_PAGE_HEADING), "Tablete");
+        assertHelper.shouldContain(actionsHelper.getTextElement(tabletsPageHeadding), "Tablete");
         return this;
     }
 
@@ -22,7 +24,7 @@ public class TabletsPage extends BasePage<TabletsPage> {
 
     //TODO: make the method generic
     public ProductPage accessProductPage() {
-        actionsHelper.clickElement(PRODUCT);
+        actionsHelper.clickElement(product);
         return new ProductPage();
     }
 

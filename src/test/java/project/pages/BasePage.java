@@ -54,21 +54,7 @@ public abstract class BasePage<T extends BasePage<T>> extends TestContext {
         actionsHelper.clickElement(tablets);
         return new TabletsPage();
     }
-    public void waitForPageLoaded() {
-        ExpectedCondition<Boolean> expectation = new
-                ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-                    }
-                };
-        try {
-            Thread.sleep(1000);
-            WebDriverWait wait = new WebDriverWait(getDriver(), 30);
-            wait.until(expectation);
-        } catch (Throwable error) {
-            Assert.fail("Timeout waiting for Page Load Request to complete.");
-        }
-    }
+
 }
 /*    public ProductPage accessProductPage(String productName) {
         By product = By.xpath(String.format("//a[contains(text(),'%s')]", productName));
