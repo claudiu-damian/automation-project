@@ -1,6 +1,5 @@
 package project;
 
-import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import project.helpers.*;
 

@@ -19,6 +19,7 @@ public class ContactsLocationVerification extends TestBase {
                 .isLogoPresent()
                 .isContactInfoPresent();
     }
+
     @When("user clicks on adress button")
     public void userEntersAProduct() {
         homePage.goToStorageAdress();
